@@ -1,0 +1,47 @@
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Data files (too large for GitHub)
+data/raw-images/
+data/processed/
+*.jpg
+*.png
+*.jpeg
+
+# Model files (too large)
+*.pth
+*.pt
+*.h5
+*.ckpt
+models/
+checkpoints/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Keep metadata and reports
+!data/metadata/
+!data/README.md
