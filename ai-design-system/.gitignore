@@ -21,8 +21,13 @@ data/processed/
 *.pt
 *.h5
 *.ckpt
-models/
+models/*.pth
+models/*.pt
 checkpoints/
+
+# But allow visualization images
+!models/*.png
+!models/*.jpg
 
 # Jupyter notebooks
 .ipynb_checkpoints/
