@@ -38,7 +38,7 @@ export default function Navbar() {
               >
                 {link.label}
               </Link>
-            )}
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
