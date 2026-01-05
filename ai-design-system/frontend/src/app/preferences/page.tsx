@@ -193,11 +193,26 @@ export default function PreferencesPage() {
           <div className="bg-primary border-2 border-lightbrown rounded-lg overflow-hidden mb-6">
             {/* Design Image */}
             <div className="relative aspect-square bg-lightbrown/30">
-              <img
-                src={`https://via.placeholder.com/600x600/693422/F6E7CA?text=${currentDesign.craft_type}+${currentDesign.style}`}
-                alt={`${currentDesign.craft_type} ${currentDesign.style} design`}
-                className="w-full h-full object-cover"
-              />
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="text-6xl mb-4">🎨</div>
+                  <p className="text-blackbrown font-medium text-lg">
+                    {currentDesign.craft_type.charAt(0).toUpperCase() +
+                      currentDesign.craft_type.slice(1).replace('_', ' ')}{' '}
+                    Design
+                  </p>
+                  <p className="text-lightbrown text-sm mt-2">
+                    {currentDesign.style.charAt(0).toUpperCase() +
+                      currentDesign.style.slice(1)}{' '}
+                    • {currentDesign.fusion_level}% Fusion
+                  </p>
+                  {currentDesign.filename && (
+                    <p className="text-xs text-darkbrown mt-2 opacity-70">
+                      ID: {currentDesign.id}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* Design Info */}
