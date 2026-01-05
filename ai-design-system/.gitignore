@@ -50,3 +50,30 @@ logs/
 # Keep metadata and reports
 !data/metadata/
 !data/README.md
+
+# Generated designs (too large for Git)
+generated_designs/
+*.png
+*.jpg
+*.jpeg
+!models/*.png
+!models/*.jpg
+
+# Gradio cache
+.gradio/
+
+# Exports (can be large)
+exports/*.xlsx
+exports/*.csv
+!exports/*.json
+
+# Logs
+logs/
+*.log
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*.local
+frontend/.vercel

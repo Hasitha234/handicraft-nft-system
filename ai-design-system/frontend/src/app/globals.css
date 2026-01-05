@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* Neutiva Font Face Declarations */
+@font-face {
+  font-family: 'Neutiva';
+  src: url('/fonts/Neutiva/Neutiva-Regular.woff2') format('woff2'),
+       url('/fonts/Neutiva/Neutiva-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neutiva';
+  src: url('/fonts/Neutiva/Neutiva-Bold.woff2') format('woff2'),
+       url('/fonts/Neutiva/Neutiva-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neutiva';
+  src: url('/fonts/Neutiva/Neutiva-Medium.woff2') format('woff2'),
+       url('/fonts/Neutiva/Neutiva-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neutiva';
+  src: url('/fonts/Neutiva/Neutiva-Light.woff2') format('woff2'),
+       url('/fonts/Neutiva/Neutiva-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary-color: #F6E7CA;
+  --lightbrown-color: #A28769;
+  --secondarybrown-color: #693422;
+  --darkbrown-color: #471A14;
+  --blackbrown-color: #290E0A;
+  --green-color: #3E3003;
+  --background: #F6E7CA;
+  --foreground: #290E0A;
+  --red-color: #B92024;
+  --font-neutiva: 'Neutiva', Arial, Helvetica, sans-serif;
+}
+
+@theme inline {
+  --color-primary: var(--primary-color);
+  --color-lightbrown: var(--lightbrown-color);
+  --color-secondarybrown: var(--secondarybrown-color);
+  --color-darkbrown: var(--darkbrown-color);
+  --color-blackbrown: var(--blackbrown-color);
+  --color-green: var(--green-color);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-red: var(--red-color);
+  --font-sans: var(--font-neutiva);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-neutiva);
+}
+
+.containerpadding {
+  @apply px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-20;
+}
+
+.title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-3xl 2xl:text-3xl font-medium;
+}
+
+.subtitle {
+  @apply text-lg sm:text-3xl md:text-4xl lg:text-xl xl:text-2xl 2xl:text-2xl text-center;
+}
+
+.description {
+  font-size: 16px;
+  font-family: var(--font-neutiva);
+}
+
+/* Range Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--secondarybrown-color);
+  cursor: pointer;
+  border: 2px solid var(--lightbrown-color);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--secondarybrown-color);
+  cursor: pointer;
+  border: 2px solid var(--lightbrown-color);
+  border: none;
+}
