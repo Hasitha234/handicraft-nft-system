@@ -5,7 +5,7 @@ FastAPI server exposing classification, generation, and preference collection
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
@@ -201,6 +201,20 @@ async def list_designs():
             designs = json.load(f)
         return {"designs": designs, "count": len(designs)}
     return {"designs": [], "count": 0}
+
+@app.get("/designs/image/{filename}")
+async def get_design_image(filename: str):
+    """Serve design image file"""
+    designs_dir = Path("generated_designs")
+    image_path = designs_dir / filename
+    
+    if not image_path.exists():
+        raise HTTPException(status_code=404, detail="Design image not found")
+    
+    return FileResponse(
+        path=str(image_path),
+        media_type="image/png" if filename.endswith('.png') else "image/jpeg"
+    )
 
 if __name__ == "__main__":
     import uvicorn

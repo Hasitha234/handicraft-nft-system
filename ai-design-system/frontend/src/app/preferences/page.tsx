@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import UserRegistration from '@/components/Preferences/UserRegistration';
 import DesignCard from '@/components/Preferences/DesignCard';
 import InteractionButtons from '@/components/Preferences/InteractionButtons';
@@ -192,27 +193,53 @@ export default function PreferencesPage() {
           {/* Design Card */}
           <div className="bg-primary border-2 border-lightbrown rounded-lg overflow-hidden mb-6">
             {/* Design Image */}
-            <div className="relative aspect-square bg-lightbrown/30">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-4">🎨</div>
-                  <p className="text-blackbrown font-medium text-lg">
-                    {currentDesign.craft_type.charAt(0).toUpperCase() +
-                      currentDesign.craft_type.slice(1).replace('_', ' ')}{' '}
-                    Design
-                  </p>
-                  <p className="text-lightbrown text-sm mt-2">
-                    {currentDesign.style.charAt(0).toUpperCase() +
-                      currentDesign.style.slice(1)}{' '}
-                    • {currentDesign.fusion_level}% Fusion
-                  </p>
-                  {currentDesign.filename && (
-                    <p className="text-xs text-darkbrown mt-2 opacity-70">
-                      ID: {currentDesign.id}
+            <div className="relative aspect-square bg-lightbrown/30 overflow-hidden">
+              {currentDesign.filename ? (
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/designs/image/${currentDesign.filename}`}
+                  alt={`${currentDesign.craft_type} ${currentDesign.style} design`}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                  onError={(e) => {
+                    // Fallback to placeholder if image fails
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="w-full h-full flex items-center justify-center">
+                          <div class="text-center p-8">
+                            <div class="text-6xl mb-4">🎨</div>
+                            <p class="text-blackbrown font-medium text-lg">
+                              ${currentDesign.craft_type.charAt(0).toUpperCase() + currentDesign.craft_type.slice(1).replace('_', ' ')} Design
+                            </p>
+                            <p class="text-lightbrown text-sm mt-2">
+                              ${currentDesign.style.charAt(0).toUpperCase() + currentDesign.style.slice(1)} • ${currentDesign.fusion_level}% Fusion
+                            </p>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <div className="text-6xl mb-4">🎨</div>
+                    <p className="text-blackbrown font-medium text-lg">
+                      {currentDesign.craft_type.charAt(0).toUpperCase() +
+                        currentDesign.craft_type.slice(1).replace('_', ' ')}{' '}
+                      Design
                     </p>
-                  )}
+                    <p className="text-lightbrown text-sm mt-2">
+                      {currentDesign.style.charAt(0).toUpperCase() +
+                        currentDesign.style.slice(1)}{' '}
+                      • {currentDesign.fusion_level}% Fusion
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Design Info */}
